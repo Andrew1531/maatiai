@@ -144,6 +144,22 @@
             color: var(--teal-core) !important;
             border-bottom: 2px solid var(--teal-core);
         }
+
+        /* Symbol Animation */
+        .symbol-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 3s ease forwards;
+        }
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .hover-glow:hover svg {
+            filter: drop-shadow(0 0 8px var(--teal-core));
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="text-silver-grey">
@@ -153,7 +169,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
-                    <div class="w-10 h-10 bg-teal flex items-center justify-center text-white font-bold text-xl rounded-lg shadow-lg">M</div>
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="12" fill="var(--teal-core)"/>
+                        <path d="M30 70V30L50 55L70 30V70" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <span class="text-2xl font-extrabold tracking-tight text-silver uppercase">MAATI<span class="text-teal">AI</span></span>
                 </div>
                 
@@ -178,8 +197,15 @@
         <!-- HOME PAGE -->
         <div id="page-home" class="page-content">
             <!-- Hero -->
-            <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-40 hero-gradient border-b border-white/5">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-40 hero-gradient border-b border-white/5 overflow-hidden">
+                <!-- Background Large Scale Symbol -->
+                <div class="absolute right-[-10%] top-[10%] opacity-5 pointer-events-none">
+                    <svg width="600" height="600" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="symbol-path" d="M100 20V180M40 70L160 70M40 70L20 130H60L40 70ZM160 70L140 130H180L160 70Z" stroke="var(--silver-grey)" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                     <div class="max-w-4xl mx-auto">
                         <span class="section-tag px-4 py-1.5 rounded-full text-[10px] uppercase mb-6 inline-block tracking-widest">The Ma’at Institute of Artificial Intelligence</span>
                         <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-8 text-silver tracking-tight">
@@ -196,13 +222,54 @@
                 </div>
             </section>
 
+            <!-- Identity Symbols Section -->
+            <section class="py-20 bg-navy-dark border-b border-white/5">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div class="text-center hover-glow group">
+                            <div class="mb-6 flex justify-center">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+                                    <path d="M50 10C50 10 30 40 30 60C30 71.0457 38.9543 80 50 80C61.0457 80 70 71.0457 70 60C70 40 50 10 50 10Z" stroke="var(--teal-core)" stroke-width="2" class="symbol-path"/>
+                                    <path d="M50 30V80" stroke="var(--teal-core)" stroke-width="1" stroke-dasharray="2 2"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-teal font-bold uppercase text-[10px] tracking-widest mb-3">The Feather (Shu)</h4>
+                            <h3 class="text-xl font-bold mb-4">Truth in Data</h3>
+                            <p class="text-silver/50 text-sm leading-relaxed">Recasting the weight of truth as data integrity. We ensure AI models are built on verifiable, unbiased truths.</p>
+                        </div>
+                        <div class="text-center hover-glow group">
+                            <div class="mb-6 flex justify-center">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+                                    <path d="M20 40H80M50 20V80M25 40L15 70H35L25 40ZM75 40L65 70H85L75 40Z" stroke="var(--teal-core)" stroke-width="2" class="symbol-path"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-teal font-bold uppercase text-[10px] tracking-widest mb-3">The Scale</h4>
+                            <h3 class="text-xl font-bold mb-4">Systemic Balance</h3>
+                            <p class="text-silver/50 text-sm leading-relaxed">Technology is a weight on the world's scale. We ensure that weight tilts toward equitable community service.</p>
+                        </div>
+                        <div class="text-center hover-glow group">
+                            <div class="mb-6 flex justify-center">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+                                    <circle cx="50" cy="30" r="10" stroke="var(--teal-core)" stroke-width="2" class="symbol-path"/>
+                                    <path d="M30 80C30 60 40 50 50 50C60 50 70 60 70 80" stroke="var(--teal-core)" stroke-width="2" class="symbol-path"/>
+                                    <path d="M20 50L35 45M80 50L65 45" stroke="var(--teal-core)" stroke-width="2" opacity="0.5"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-teal font-bold uppercase text-[10px] tracking-widest mb-3">The Goddess</h4>
+                            <h3 class="text-xl font-bold mb-4">Sovereign Wisdom</h3>
+                            <p class="text-silver/50 text-sm leading-relaxed">Empowering communities with technical self-determination to become the masters of their own intelligence.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Vision Section -->
-            <section id="vision" class="py-24 bg-navy-dark border-b border-white/5">
+            <section id="vision" class="py-24 bg-navy-bg border-b border-white/5 relative">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid lg:grid-cols-2 gap-16 items-center">
                         <div class="order-2 lg:order-1">
                             <span class="text-teal font-bold text-[10px] uppercase tracking-[0.2em] mb-4 block">Our Guiding Principle</span>
-                            <h2 class="text-4xl font-extrabold mb-8 text-silver leading-tight">Empowering Communities Through <span class="text-teal">AI Self-Determination</span></h2>
+                            <h2 class="text-4xl font-extrabold mb-8 text-silver leading-tight uppercase tracking-tight">Ancient Values <br/> <span class="text-teal">Modern Intelligence</span></h2>
                             
                             <div class="space-y-8">
                                 <div class="vision-box pl-6 py-4">
@@ -215,7 +282,7 @@
                                 </p>
                                 <div class="bg-white/5 p-8 rounded-2xl border border-white/10 italic relative">
                                     <i class="fas fa-quote-left absolute top-4 left-4 text-teal/20 text-3xl"></i>
-                                    <p class="text-silver/90 text-lg relative z-10">
+                                    <p class="text-silver/90 text-lg relative z-10 leading-relaxed">
                                         Inspired by <span class="font-bold text-teal">Ma'at</span>, we envision a future where marginalized communities are embodiments of truthfulness, equitable service, and life.
                                     </p>
                                 </div>
@@ -223,14 +290,21 @@
                         </div>
                         <div class="relative order-1 lg:order-2">
                             <div class="absolute -inset-10 bg-teal/10 rounded-full blur-3xl"></div>
-                            <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80" alt="Ethical Tech" class="rounded-2xl shadow-2xl grayscale-[40%] border border-white/10 opacity-80">
+                            <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80" alt="Ethical Tech" class="grayscale-[40%] opacity-80 hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-bg to-transparent opacity-60"></div>
+                                <div class="absolute bottom-6 left-6 flex items-center gap-3">
+                                    <div class="w-12 h-px bg-teal"></div>
+                                    <span class="text-[10px] uppercase tracking-widest font-bold">The Recast of Ma'at</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Team Section -->
-            <section id="team" class="py-24 bg-navy-bg">
+            <section id="team" class="py-24 bg-navy-dark">
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                         <div>
@@ -241,7 +315,7 @@
                     
                     <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl">
                         <div class="team-card-small flex flex-col sm:flex-row gap-6 p-6 rounded-2xl">
-                            <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 grayscale opacity-80">
+                            <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 grayscale opacity-80 border border-white/10">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Skye" class="w-full h-full object-cover">
                             </div>
                             <div>
@@ -251,7 +325,7 @@
                             </div>
                         </div>
                         <div class="team-card-small flex flex-col sm:flex-row gap-6 p-6 rounded-2xl">
-                            <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 grayscale opacity-80">
+                            <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 grayscale opacity-80 border border-white/10">
                                 <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80" alt="Paul" class="w-full h-full object-cover">
                             </div>
                             <div>
@@ -269,7 +343,13 @@
         <div id="page-services" class="page-content page-hidden">
             <section class="pt-32 pb-24 hero-gradient">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
+                    <div class="text-center mb-16 relative">
+                        <!-- Subtle Feather Symbol -->
+                        <div class="absolute left-1/2 -top-10 -translate-x-1/2 opacity-10">
+                            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+                                <path d="M50 10C50 10 30 40 30 60C30 71.0457 38.9543 80 50 80C61.0457 80 70 71.0457 70 60C70 40 50 10 50 10Z" stroke="white" stroke-width="1"/>
+                            </svg>
+                        </div>
                         <span class="section-tag px-4 py-1.5 rounded-full text-[10px] uppercase mb-6 inline-block tracking-widest">Capabilities & Expertise</span>
                         <h2 class="text-5xl font-extrabold text-silver tracking-tight uppercase mb-6">Our Services</h2>
                         <p class="text-silver/60 max-w-2xl mx-auto font-light leading-relaxed">
@@ -279,8 +359,8 @@
 
                     <div class="grid lg:grid-cols-2 gap-8">
                         <!-- Service 1 -->
-                        <div class="service-tier-card p-10 rounded-3xl">
-                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg">
+                        <div class="service-tier-card p-10 rounded-3xl group">
+                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg group-hover:rotate-6 transition-transform">
                                 <i class="fas fa-file-contract text-xl"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-silver mb-4 tracking-tight uppercase">Tech Optimization & Negotiation</h3>
@@ -295,8 +375,8 @@
                         </div>
 
                         <!-- Service 2 -->
-                        <div class="service-tier-card p-10 rounded-3xl">
-                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg">
+                        <div class="service-tier-card p-10 rounded-3xl group">
+                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg group-hover:rotate-6 transition-transform">
                                 <i class="fas fa-users-cog text-xl"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-silver mb-4 tracking-tight uppercase">CRM System Strategy</h3>
@@ -311,8 +391,8 @@
                         </div>
 
                         <!-- Service 3 -->
-                        <div class="service-tier-card p-10 rounded-3xl">
-                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg">
+                        <div class="service-tier-card p-10 rounded-3xl group">
+                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg group-hover:rotate-6 transition-transform">
                                 <i class="fas fa-brain text-xl"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-silver mb-4 tracking-tight uppercase">Artificial Intelligence Integration</h3>
@@ -327,8 +407,8 @@
                         </div>
 
                         <!-- Service 4 -->
-                        <div class="service-tier-card p-10 rounded-3xl">
-                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg">
+                        <div class="service-tier-card p-10 rounded-3xl group">
+                            <div class="w-14 h-14 rounded-xl bg-teal text-white flex items-center justify-center mb-8 shadow-lg group-hover:rotate-6 transition-transform">
                                 <i class="fas fa-chart-line text-xl"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-silver mb-4 tracking-tight uppercase">Data Analysis & Visualization</h3>
@@ -349,7 +429,7 @@
     </main>
 
     <!-- Contact Section (Persistent) -->
-    <section id="contact" class="py-24 bg-navy-dark">
+    <section id="contact" class="py-24 bg-navy-bg border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center">
                 <div class="md:w-1/2">
@@ -380,24 +460,35 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navy-bg pt-20 pb-10 border-t border-white/5">
+    <footer class="bg-navy-dark pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
                 <div class="max-w-xs">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-teal rounded-md flex items-center justify-center text-white font-bold">M</div>
+                    <div class="flex items-center gap-2 mb-6 cursor-pointer" onclick="showPage('home')">
+                        <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none">
+                            <rect width="100" height="100" rx="8" fill="var(--teal-core)"/>
+                            <path d="M30 70V30L50 55L70 30V70" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <span class="text-xl font-extrabold tracking-tight text-silver uppercase">MAATI<span class="text-teal">AI</span></span>
                     </div>
-                    <p class="text-silver/40 text-xs leading-relaxed">
+                    <p class="text-silver/40 text-xs leading-relaxed mb-6">
                         The Ma’at Institute of Artificial Intelligence (MIAI) leverages data science to empower systemic change.
                     </p>
+                    <div class="flex gap-4">
+                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" class="opacity-20">
+                            <path d="M100 20V180M40 70L160 70M40 70L20 130H60L40 70ZM160 70L140 130H180L160 70Z" stroke="white" stroke-width="4"/>
+                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" class="opacity-20">
+                            <path d="M50 10C50 10 30 40 30 60C30 71.0457 38.9543 80 50 80C61.0457 80 70 71.0457 70 60C70 40 50 10 50 10Z" stroke="white" stroke-width="4"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 gap-16">
                     <div>
                         <h4 class="text-silver font-bold mb-6 text-[10px] uppercase tracking-widest">Platform</h4>
                         <ul class="space-y-4 text-[10px] text-silver/40 font-bold tracking-wider">
-                            <li><button onclick="showPage('home')" class="hover:text-teal transition">HOME</button></li>
-                            <li><button onclick="showPage('services')" class="hover:text-teal transition">SERVICES</button></li>
+                            <li><button onclick="showPage('home')" class="hover:text-teal transition uppercase">HOME</button></li>
+                            <li><button onclick="showPage('services')" class="hover:text-teal transition uppercase">SERVICES</button></li>
                         </ul>
                     </div>
                     <div>
@@ -410,7 +501,7 @@
             </div>
             
             <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.1em] font-bold text-silver/20 text-center md:text-left">
-                <p>© 2026 Maati Institute of AI. Built for the movement.</p>
+                <p>© 2026 Maati Institute of AI. Recasting ancient wisdom.</p>
                 <a href="https://ladmedia.co" target="_blank" class="flex items-center gap-2 hover:text-teal transition-colors group">
                     <span>Collaborator</span>
                     <span class="text-silver/40 group-hover:text-teal">LAD MEDIA</span>
