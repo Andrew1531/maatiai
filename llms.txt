@@ -1,0 +1,37 @@
+# llms.txt for maatiai.org
+# Defines how AI crawlers may access and use site content.
+
+# --- Site Metadata ---
+site: https://maatiai.org
+owner: Ma'at Institute of Artificial Intelligence
+contact: https://maatiai.org/contact
+policy: allow
+
+# --- Allowed Pages ---
+allow: /
+allow: /capabilities
+allow: /the-stewards
+allow: /contact
+
+# --- Disallowed Content ---
+# (Add paths here if you later want to block AI training on specific pages)
+disallow: /private
+disallow: /admin
+
+# --- Crawl Behavior ---
+rate_limit: 5r/m
+cache: allow
+index: allow
+train: allow
+derive: allow
+
+# --- Priority Hints ---
+priority: / = high
+priority: /capabilities = medium
+priority: /the-stewards = medium
+priority: /contact = medium
+
+# --- Additional Notes ---
+# This file is designed for LLM crawlers such as:
+# OpenAI GPTBot, Anthropic ClaudeBot, Google Gemini, Perplexity, etc.
+# It complements robots.txt but is AI‑specific.
