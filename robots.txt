@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Disallowed administrative or private paths
+Disallow: /admin
+Disallow: /private
+
+# Sitemap reference
+Sitemap: https://maatiai.org/sitemap.xml
+
+# AI‑specific crawler declarations (optional but recommended)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
